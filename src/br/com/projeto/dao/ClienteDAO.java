@@ -36,7 +36,7 @@ public class ClienteDAO {
             stmt.setString(10, obj.getComplemento());
             stmt.setString(11, obj.getBairro());
             stmt.setString(12, obj.getCidade());
-            stmt.setString(13, obj.getEndereco());
+            stmt.setString(13, obj.getUf());
             
             stmt.execute();
             stmt.close();
