@@ -19,11 +19,12 @@ public class ConnectionFactory {
     private static final String URL="jdbc:mysql://localhost/bdvendas";
     private static final String USER="usuariocurso";
     private static final String PASS="123";
+    
     public Connection getConnection(){
         
         try {
-            
-            return DriverManager.getConnection(URL,USER,PASS);
+            Connection c=DriverManager.getConnection(URL,USER,PASS);
+            return c;
             
         } catch (Exception e) {
             throw new RuntimeException(e);
