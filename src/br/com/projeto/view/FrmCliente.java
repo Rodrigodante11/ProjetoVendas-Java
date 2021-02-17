@@ -701,7 +701,6 @@ public class FrmCliente extends javax.swing.JFrame {
         
         new Utilitarios().LimpaTela(painel_listaDados);
         
-        new Utilitarios().LimpaTela(painel_listaDados);
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
