@@ -87,15 +87,16 @@ public class FrmCliente extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         cbUf = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
-        jTextField10 = new javax.swing.JTextField();
+        txtPesquisa = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        btnPesquisar = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaClientes = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        btnPesquisa = new javax.swing.JToggleButton();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -409,17 +410,21 @@ public class FrmCliente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Consulta de clientes", jPanel3);
 
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                txtPesquisaActionPerformed(evt);
+            }
+        });
+        txtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPesquisaKeyPressed(evt);
             }
         });
 
         jLabel28.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel28.setText("Nome:");
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel3.setText("Pesquisar");
+        btnPesquisar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
 
         tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -444,19 +449,7 @@ public class FrmCliente extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabelaClientes);
         if (tabelaClientes.getColumnModel().getColumnCount() > 0) {
-            tabelaClientes.getColumnModel().getColumn(0).setResizable(false);
-            tabelaClientes.getColumnModel().getColumn(1).setResizable(false);
-            tabelaClientes.getColumnModel().getColumn(2).setResizable(false);
-            tabelaClientes.getColumnModel().getColumn(3).setResizable(false);
-            tabelaClientes.getColumnModel().getColumn(4).setResizable(false);
-            tabelaClientes.getColumnModel().getColumn(5).setResizable(false);
-            tabelaClientes.getColumnModel().getColumn(6).setResizable(false);
-            tabelaClientes.getColumnModel().getColumn(7).setResizable(false);
-            tabelaClientes.getColumnModel().getColumn(8).setResizable(false);
-            tabelaClientes.getColumnModel().getColumn(9).setResizable(false);
             tabelaClientes.getColumnModel().getColumn(10).setResizable(false);
-            tabelaClientes.getColumnModel().getColumn(11).setResizable(false);
-            tabelaClientes.getColumnModel().getColumn(12).setResizable(false);
             tabelaClientes.getColumnModel().getColumn(13).setResizable(false);
         }
 
@@ -487,6 +480,13 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
 
+        btnPesquisa.setText("Pesquisar");
+        btnPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -500,9 +500,11 @@ public class FrmCliente extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel28)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
+                        .addComponent(btnPesquisa)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPesquisar)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -522,11 +524,12 @@ public class FrmCliente extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(txtPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar)
+                    .addComponent(btnPesquisa))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62)
@@ -619,9 +622,9 @@ public class FrmCliente extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void txtPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesquisaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_txtPesquisaActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -782,6 +785,63 @@ public class FrmCliente extends javax.swing.JFrame {
         dao.alterarCliente(obj);    
     }//GEN-LAST:event_btnEditarActionPerformed
 
+    private void btnPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisaActionPerformed
+        // Botão Pesquisar
+        String nome="%"+txtPesquisa.getText() +"%"; //% = QUALQUER CARACTER NO INICIO E NO FINAL
+        
+        ClienteDAO dao=new ClienteDAO();
+        List<Clientes> lista = dao.buscarClientePorNome(nome);
+        DefaultTableModel dados =(DefaultTableModel) tabelaClientes.getModel();
+        dados.setNumRows(0);
+        for(Clientes c:lista){
+            dados.addRow(new Object[]{
+                c.getId(),
+                c.getNome(),
+                c.getRg(),
+                c.getCpf(),
+                c.getEmail(),
+                c.getTelefone(),
+                c.getCelular(),
+                c.getCep(),
+                c.getEndereco(),
+                c.getNumero(),
+                c.getComplemento(),
+                c.getBairro(),
+                c.getCidade(),
+                c.getUf()
+            });
+        }
+        
+    }//GEN-LAST:event_btnPesquisaActionPerformed
+
+    private void txtPesquisaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyPressed
+        // evento para ir buscarndo de acordo que vai escrevedo a pesquisa:
+        String nome="%"+txtPesquisa.getText() +"%"; //% = QUALQUER CARACTER NO INICIO E NO FINAL
+        
+        ClienteDAO dao=new ClienteDAO();
+        List<Clientes> lista = dao.buscarClientePorNome(nome);
+        DefaultTableModel dados =(DefaultTableModel) tabelaClientes.getModel();
+        dados.setNumRows(0);
+        for(Clientes c:lista){
+            dados.addRow(new Object[]{
+                c.getId(),
+                c.getNome(),
+                c.getRg(),
+                c.getCpf(),
+                c.getEmail(),
+                c.getTelefone(),
+                c.getCelular(),
+                c.getCep(),
+                c.getEndereco(),
+                c.getNumero(),
+                c.getComplemento(),
+                c.getBairro(),
+                c.getCidade(),
+                c.getUf()
+            });
+        }
+    }//GEN-LAST:event_txtPesquisaKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -821,6 +881,8 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JToggleButton btnPesquisa;
+    private javax.swing.JLabel btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbUf;
     private javax.swing.JButton jButton2;
@@ -843,13 +905,11 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField10;
     private javax.swing.JTable tabelaClientes;
     private javax.swing.JTextField txtBairro;
     private javax.swing.JFormattedTextField txtCelular;
@@ -862,6 +922,7 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
+    private javax.swing.JTextField txtPesquisa;
     private javax.swing.JFormattedTextField txtRg;
     private javax.swing.JFormattedTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
