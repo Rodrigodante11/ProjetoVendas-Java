@@ -150,11 +150,12 @@ public class FuncionarioDAO {
              JOptionPane.showMessageDialog(null, "Erro ao Excluir " +e);
         }
     }
-    public List<Funcionarios>  buscarFuncionarioPorNome(String nome){
+    //lista Funcionario por nome
+    public List<Funcionarios>  listaFuncionarioPorNome(String nome){
         try {
             List<Funcionarios>lista= new ArrayList<>();
             
-            String sql= "SELECT * FROM tb_clientes WHERE nome LIKE ?"; //(LIKE) = puesquisa por aproximação
+            String sql= "SELECT * FROM tb_funcionarios WHERE nome LIKE ?"; //(LIKE) = pesquisa por aproximação
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, nome);
             ResultSet rs=stmt.executeQuery();
@@ -167,6 +168,11 @@ public class FuncionarioDAO {
                 obj.setRg(rs.getString("rg"));
                 obj.setCpf(rs.getString("cpf"));
                 obj.setEmail(rs.getString("email"));
+                
+                obj.setSenha(rs.getString("senha"));
+                obj.setCargo(rs.getString("cargo"));
+                obj.setNivel_acesso(rs.getString("nivel_acesso"));
+                
                 obj.setTelefone(rs.getString("telefone"));
                 obj.setCelular(rs.getString("celular"));
                 obj.setCep(rs.getString("cep"));
@@ -185,21 +191,27 @@ public class FuncionarioDAO {
             return null;
         }
     }
+    
      public Funcionarios consultaPorNome(String nome){
          try {
              
-             String sql="SELECT * FROM tb_clientes WHERE nome =?";
+             String sql="SELECT * FROM tb_funcionarios WHERE nome =?";
              PreparedStatement stmt =con.prepareStatement(sql);
              stmt.setString(1, nome);
              ResultSet rs=stmt.executeQuery();
              
-              Funcionarios obj = new Funcionarios();
+             Funcionarios obj = new Funcionarios();
              if(rs.next()){
                 obj.setId(rs.getInt("id"));
                 obj.setNome(rs.getString("nome"));
                 obj.setRg(rs.getString("rg"));
                 obj.setCpf(rs.getString("cpf"));
                 obj.setEmail(rs.getString("email"));
+                
+                obj.setSenha(rs.getString("senha"));
+                obj.setCargo(rs.getString("cargo"));
+                obj.setNivel_acesso(rs.getString("nivel_acesso"));
+                
                 obj.setTelefone(rs.getString("telefone"));
                 obj.setCelular(rs.getString("celular"));
                 obj.setCep(rs.getString("cep"));
@@ -213,7 +225,7 @@ public class FuncionarioDAO {
              return obj;
              
          } catch (Exception e) {
-             JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+             JOptionPane.showMessageDialog(null, "Funcionario não encontrado");
              return null;
          }
              

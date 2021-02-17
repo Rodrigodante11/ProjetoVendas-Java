@@ -887,7 +887,7 @@ public class FrmFuncionarios extends javax.swing.JFrame {
         String nome="%"+txtPesquisa.getText() +"%"; //% = QUALQUER CARACTER NO INICIO E NO FINAL
         
         FuncionarioDAO dao=new FuncionarioDAO();
-        List<Funcionarios> lista = dao.buscarFuncionarioPorNome(nome);
+        List<Funcionarios> lista = dao.listaFuncionarioPorNome(nome);
         DefaultTableModel dados =(DefaultTableModel) tabelaFuncionarios.getModel();
         dados.setNumRows(0);
         for(Funcionarios c:lista){
@@ -917,7 +917,7 @@ public class FrmFuncionarios extends javax.swing.JFrame {
         String nome="%"+txtPesquisa.getText() +"%"; //% = QUALQUER CARACTER NO INICIO E NO FINAL
         
         FuncionarioDAO dao=new FuncionarioDAO();
-        List<Funcionarios> lista = dao.buscarFuncionarioPorNome(nome);
+        List<Funcionarios> lista = dao.listaFuncionarioPorNome(nome);
         DefaultTableModel dados =(DefaultTableModel) tabelaFuncionarios.getModel();
         dados.setNumRows(0);
         for(Funcionarios c:lista){
@@ -941,32 +941,38 @@ public class FrmFuncionarios extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPesquisaKeyPressed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // Botao buscar cliente por nome
+        // Botao buscar Funcionario por nome
         
             String nome = txtNome.getText(); //pegando o nome difitado pelo usuario
             Funcionarios obj = new Funcionarios();
             FuncionarioDAO dao= new FuncionarioDAO();
             
             obj=dao.consultaPorNome(nome);
-            
-            txtCodigo.setText(String.valueOf(obj.getId()));
-            txtNome.setText(obj.getNome());
-            txtRg.setText(obj.getRg());
-            txtCpf.setText(obj.getCpf());
-            txtEmail.setText(obj.getEmail());
-            txtTelefone.setText(obj.getTelefone());
-            txtCelular.setText(obj.getCelular());
-            txtCep.setText(obj.getCep());
-            txtEndereco.setText(obj.getEndereco());
-            txtNumero.setText(String.valueOf(obj.getNumero()));
-            txtComplemento.setText(obj.getComplemento());
-            txtBairro.setText(obj.getBairro());
-            txtCidade.setText(obj.getCidade());
-            cbUf.setSelectedItem(obj.getUf());
-            
             if(obj.getNome()==null){
-                JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+                JOptionPane.showMessageDialog(null, "Funcionario "+nome+" não encontrado");
+            }else{
+                txtCodigo.setText(String.valueOf(obj.getId()));
+                txtNome.setText(obj.getNome());
+                txtRg.setText(obj.getRg());
+                txtCpf.setText(obj.getCpf());
+                txtEmail.setText(obj.getEmail());
+
+                txtSenha.setText(obj.getSenha());
+                txtCargo.setText(obj.getCargo());
+                cbNivel.setSelectedItem(obj.getNivel_acesso());
+
+                txtTelefone.setText(obj.getTelefone());
+                txtCelular.setText(obj.getCelular());
+                txtCep.setText(obj.getCep());
+                txtEndereco.setText(obj.getEndereco());
+                txtNumero.setText(String.valueOf(obj.getNumero()));
+                txtComplemento.setText(obj.getComplemento());
+                txtBairro.setText(obj.getBairro());
+                txtCidade.setText(obj.getCidade());
+                cbUf.setSelectedItem(obj.getUf());
             }
+            
+            
         
     }//GEN-LAST:event_btnBuscarActionPerformed
 
