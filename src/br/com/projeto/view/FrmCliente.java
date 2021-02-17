@@ -9,6 +9,7 @@ import br.com.projeto.dao.ClienteDAO;
 import br.com.projeto.model.Clientes;
 import br.com.projeto.model.Utilitarios;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -87,7 +88,7 @@ public class FrmCliente extends javax.swing.JFrame {
         txtRg = new javax.swing.JFormattedTextField();
         jLabel27 = new javax.swing.JLabel();
         cbUf = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
         painel_dados = new javax.swing.JPanel();
         txtPesquisa = new javax.swing.JTextField();
         jLabel28 = new javax.swing.JLabel();
@@ -291,7 +292,12 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Pesquisar");
+        btnBuscar.setText("Pesquisar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painel_listaDadosLayout = new javax.swing.GroupLayout(painel_listaDados);
         painel_listaDados.setLayout(painel_listaDadosLayout);
@@ -364,7 +370,7 @@ public class FrmCliente extends javax.swing.JFrame {
                                 .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(12, 12, 12)
                                 .addComponent(txtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jButton1))
+                    .addComponent(btnBuscar))
                 .addGap(25, 25, 25))
         );
         painel_listaDadosLayout.setVerticalGroup(
@@ -378,7 +384,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 .addGroup(painel_listaDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(btnBuscar))
                 .addGap(13, 13, 13)
                 .addGroup(painel_listaDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
@@ -861,6 +867,36 @@ public class FrmCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPesquisaKeyPressed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // Botao buscar cliente por nome
+        
+            String nome = txtNome.getText(); //pegando o nome difitado pelo usuario
+            Clientes obj = new Clientes();
+            ClienteDAO dao= new ClienteDAO();
+            
+            obj=dao.consultaPorNome(nome);
+            
+            txtCodigo.setText(String.valueOf(obj.getId()));
+            txtNome.setText(obj.getNome());
+            txtRg.setText(obj.getRg());
+            txtCpf.setText(obj.getCpf());
+            txtEmail.setText(obj.getEmail());
+            txtTelefone.setText(obj.getTelefone());
+            txtCelular.setText(obj.getCelular());
+            txtCep.setText(obj.getCep());
+            txtEndereco.setText(obj.getEndereco());
+            txtNumero.setText(String.valueOf(obj.getNumero()));
+            txtComplemento.setText(obj.getComplemento());
+            txtBairro.setText(obj.getBairro());
+            txtCidade.setText(obj.getCidade());
+            cbUf.setSelectedItem(obj.getUf());
+            
+            if(obj.getNome()==null){
+                JOptionPane.showMessageDialog(null, "Cliente não encontrado");
+            }
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -897,6 +933,7 @@ public class FrmCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
@@ -904,7 +941,6 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JLabel btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cbUf;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
