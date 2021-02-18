@@ -4,6 +4,7 @@ package br.com.projeto.dao;
 import br.com.projeto.jdbc.ConnectionFactory;
 import br.com.projeto.model.Funcionarios;
 import br.com.projeto.model.WebServiceCep;
+import br.com.projeto.view.FmrLogin;
 import br.com.projeto.view.FrmMenu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -270,10 +271,13 @@ public class FuncionarioDAO {
               }else{
                   //dados incorretos
                   JOptionPane.showMessageDialog(null, "Dados Incorretos");
+                  new FmrLogin().setVisible(true);
               }
               
           } catch (SQLException e) {
               JOptionPane.showMessageDialog(null, "Erro: "+e);
+              
+              
           }
               
       }
