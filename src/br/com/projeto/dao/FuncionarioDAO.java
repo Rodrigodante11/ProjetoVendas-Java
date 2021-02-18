@@ -4,6 +4,7 @@ package br.com.projeto.dao;
 import br.com.projeto.jdbc.ConnectionFactory;
 import br.com.projeto.model.Funcionarios;
 import br.com.projeto.model.WebServiceCep;
+import br.com.projeto.view.FrmMenu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -250,5 +251,29 @@ public class FuncionarioDAO {
             JOptionPane.showMessageDialog(null, "Descrição do erro: " + webServiceCep.getResultText());
             return null;
         }
+    }
+      //Metodo efetua login
+      public void efetuarLogin(String email,String senha){
+          try {
+              String sql ="SELECT * FROM tb_funcionarios WHERE email=? AND senha = ?";
+              PreparedStatement stmt =con.prepareStatement(sql);
+              stmt.setString(1, email);
+              stmt.setString(2, senha);
+              
+              ResultSet rs=stmt.executeQuery();//toda vez que usa o (Select) usa o ResultSet
+              if(rs.next()){
+                  //Usuario conseguir logar
+                  JOptionPane.showMessageDialog(null, "Seja bem vindo ao Sistema");
+                  FrmMenu tela=new FrmMenu();
+                  tela.setVisible(true);
+              }else{
+                  //dados incorretos
+                  JOptionPane.showMessageDialog(null, "Dados Incorretos");
+              }
+              
+          } catch (SQLException e) {
+              JOptionPane.showMessageDialog(null, "Erro: "+e);
+          }
+              
       }
 }
