@@ -107,6 +107,7 @@ public class FrmCliente extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cliente");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -118,7 +119,7 @@ public class FrmCliente extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Cadasro de Cliente");
+        jLabel1.setText("Cadastro de Cliente");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -318,9 +319,7 @@ public class FrmCliente extends javax.swing.JFrame {
                             .addComponent(jLabel16))
                         .addGap(18, 18, 18)
                         .addGroup(painel_listaDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(painel_listaDadosLayout.createSequentialGroup()
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNome)))
                     .addGroup(painel_listaDadosLayout.createSequentialGroup()
                         .addGroup(painel_listaDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
