@@ -3,6 +3,7 @@ package br.com.projeto.dao;
 import br.com.projeto.jdbc.ConnectionFactory;
 import br.com.projeto.model.Fornecedores;
 import br.com.projeto.model.Produtos;
+import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,7 +35,7 @@ public class ProdutoDAO {
             stmt.close();
             
             JOptionPane.showMessageDialog(null, "Produto Cadastrado com suceso!");
-        } catch (Exception e) {
+        } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(null, "Erro "+e.getMessage());
         }
     }

@@ -476,19 +476,23 @@ public class FrmProdutos extends javax.swing.JFrame {
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         //Botão Salvar
-        
-        Produtos obj = new Produtos();
-        obj.setDescricao(txtDescricao.getText());
-        obj.setPreco(Double.parseDouble(txtPreco.getText()));
-        obj.setQtd_estoque(Integer.parseInt(txtQEstoque.getText()));
-        
-        //Criar um objeto de Fornecedores
-        Fornecedores f = new Fornecedores();
-        f= (Fornecedores) cbFornecedor.getSelectedItem();
-        obj.setFornecedor(f);
-        
-        ProdutoDAO dao= new ProdutoDAO();
-        dao.cadastrarProduto(obj);
+        try {
+             Produtos obj = new Produtos();
+            obj.setDescricao(txtDescricao.getText());
+            obj.setPreco(Double.parseDouble(txtPreco.getText()));
+            obj.setQtd_estoque(Integer.parseInt(txtQEstoque.getText()));
+
+            //Criar um objeto de Fornecedores
+            Fornecedores f = new Fornecedores();
+            f= (Fornecedores) cbFornecedor.getSelectedItem();
+            obj.setFornecedor(f);
+
+            ProdutoDAO dao= new ProdutoDAO();
+            dao.cadastrarProduto(obj);
+        } catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Formato dos campos invalidos");
+        }
+       
         
         
         new Utilitarios().LimpaTela(painel_listaDados);
