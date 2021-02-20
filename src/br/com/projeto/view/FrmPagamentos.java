@@ -108,6 +108,7 @@ public class FrmPagamentos extends javax.swing.JFrame {
             }
         });
 
+        txtTroco.setEditable(false);
         txtTroco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTrocoActionPerformed(evt);

@@ -12,6 +12,8 @@ import br.com.projeto.model.Fornecedores;
 import br.com.projeto.model.Produtos;
 import br.com.projeto.model.Utilitarios;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -140,6 +142,7 @@ public class FrmVendas extends javax.swing.JFrame {
             }
         });
 
+        txtData.setEditable(false);
         txtData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDataActionPerformed(evt);
@@ -441,8 +444,11 @@ public class FrmVendas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        //carrega a lista de Cliente
-        listar();
+       //Carrega a data atual do Sistema
+       Date agora= new Date();
+       SimpleDateFormat dataBr= new SimpleDateFormat("dd/MM/yyyy");
+       String dataFormatada = dataBr.format(agora);
+       txtData.setText(dataFormatada);
     }//GEN-LAST:event_formWindowActivated
 
     private void txtCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCpfActionPerformed
