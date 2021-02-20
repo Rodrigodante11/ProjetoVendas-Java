@@ -68,7 +68,7 @@ public class FrmVendas extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
         btnBuscar2 = new javax.swing.JButton();
-        btnBuscar3 = new javax.swing.JButton();
+        btnPagamento = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela de vendas");
@@ -387,6 +387,7 @@ public class FrmVendas extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
+        btnBuscar2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscar2.setText("CANCELAR VENDA");
         btnBuscar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -394,10 +395,11 @@ public class FrmVendas extends javax.swing.JFrame {
             }
         });
 
-        btnBuscar3.setText("PAGAMENTO");
-        btnBuscar3.addActionListener(new java.awt.event.ActionListener() {
+        btnPagamento.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnPagamento.setText("Pagamento");
+        btnPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscar3ActionPerformed(evt);
+                btnPagamentoActionPerformed(evt);
             }
         });
 
@@ -408,8 +410,8 @@ public class FrmVendas extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBuscar3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(btnPagamento)
+                .addGap(35, 35, 35)
                 .addComponent(btnBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
@@ -423,6 +425,9 @@ public class FrmVendas extends javax.swing.JFrame {
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(93, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnBuscar2, btnPagamento});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -439,10 +444,12 @@ public class FrmVendas extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscar3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscar2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPagamento))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnBuscar2, btnPagamento});
 
         pack();
         setLocationRelativeTo(null);
@@ -511,10 +518,6 @@ public class FrmVendas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscar2ActionPerformed
 
-    private void btnBuscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBuscar3ActionPerformed
-
     private void btnBuscarProduto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarProduto1ActionPerformed
         qtd= Integer.parseInt(txtQtd.getText());
         preco = Double.parseDouble((txtPreco.getText()));
@@ -523,6 +526,7 @@ public class FrmVendas extends javax.swing.JFrame {
         
         txtTotal.setText(String.valueOf(total));
         
+        //adicionar produto no carrinho
         carrinho=(DefaultTableModel) tabelaItems.getModel();
         
         carrinho.addRow(new Object[]{
@@ -571,6 +575,13 @@ public class FrmVendas extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCodigoKeyPressed
 
+    private void btnPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagamentoActionPerformed
+        FrmPagamentos telaPagamaento = new FrmPagamentos();
+        telaPagamaento.txtTotalVenda.setText(String.valueOf(total)); //txtTotalVenda esta publico em propriedade para poder fazer isso
+        telaPagamaento.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnPagamentoActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -612,10 +623,10 @@ public class FrmVendas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar2;
-    private javax.swing.JButton btnBuscar3;
     private javax.swing.JButton btnBuscarCliente;
     private javax.swing.JButton btnBuscarProduto;
     private javax.swing.JButton btnBuscarProduto1;
+    private javax.swing.JButton btnPagamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;

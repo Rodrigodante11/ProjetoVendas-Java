@@ -16,6 +16,11 @@ public class FrmPagamentos extends javax.swing.JFrame {
      */
     public FrmPagamentos() {
         initComponents();
+        
+        txtCartao.setText("0");
+        txtDinheiro.setText("0");
+        txtCheque.setText("0");
+        txtTroco.setText("0");
     }
 
     /**
@@ -83,18 +88,21 @@ public class FrmPagamentos extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel6.setText("Total Venda:");
 
+        txtDinheiro.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         txtDinheiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDinheiroActionPerformed(evt);
             }
         });
 
+        txtCartao.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         txtCartao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCartaoActionPerformed(evt);
             }
         });
 
+        txtCheque.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         txtCheque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtChequeActionPerformed(evt);
@@ -102,6 +110,7 @@ public class FrmPagamentos extends javax.swing.JFrame {
         });
 
         txtTotalVenda.setEditable(false);
+        txtTotalVenda.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         txtTotalVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTotalVendaActionPerformed(evt);
@@ -109,6 +118,7 @@ public class FrmPagamentos extends javax.swing.JFrame {
         });
 
         txtTroco.setEditable(false);
+        txtTroco.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         txtTroco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTrocoActionPerformed(evt);
@@ -185,7 +195,7 @@ public class FrmPagamentos extends javax.swing.JFrame {
                     .addComponent(txtTotalVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnFinalizarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -213,7 +223,18 @@ public class FrmPagamentos extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTrocoActionPerformed
 
     private void btnFinalizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarVendaActionPerformed
-        // TODO add your handling code here:
+       double pCartao,pCheque,pDinheiro, totalPago, totalVenda, troco;
+       
+       pCartao = Double.parseDouble(txtCartao.getText());
+       pCheque = Double.parseDouble(txtCheque.getText());
+       pDinheiro = Double.parseDouble(txtDinheiro.getText());
+       
+       totalVenda=Double.parseDouble(txtTotalVenda.getText());
+       
+       totalPago=pCartao+pCheque+pDinheiro;
+       
+       troco= totalPago-totalVenda;
+       txtTroco.setText(String.valueOf(troco));
     }//GEN-LAST:event_btnFinalizarVendaActionPerformed
 
     /**
@@ -263,7 +284,7 @@ public class FrmPagamentos extends javax.swing.JFrame {
     private javax.swing.JTextField txtCartao;
     private javax.swing.JTextField txtCheque;
     private javax.swing.JTextField txtDinheiro;
-    private javax.swing.JTextField txtTotalVenda;
+    public javax.swing.JTextField txtTotalVenda;
     private javax.swing.JTextField txtTroco;
     // End of variables declaration//GEN-END:variables
 }
