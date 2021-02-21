@@ -5,6 +5,14 @@
  */
 package br.com.projeto.view;
 
+import br.com.projeto.dao.VendaDAO;
+import br.com.projeto.model.Vendas;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author rodri
@@ -70,13 +78,13 @@ public class FmrHistorico extends javax.swing.JFrame {
         jLabel2.setText("Data Inicial:");
 
         try {
-            txtDataInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/##")));
+            txtDataInicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
         try {
-            txtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/##")));
+            txtDataFim.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -85,6 +93,11 @@ public class FmrHistorico extends javax.swing.JFrame {
         jLabel3.setText("Data Fim:");
 
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -163,6 +176,28 @@ public class FmrHistorico extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        //botão buscar venda por periodo
+        DateTimeFormatter formato =DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate data_inicio=LocalDate.parse(txtDataInicio.getText(),formato);//convertendo o formato da data
+        LocalDate data_fim=LocalDate.parse(txtDataFim.getText(),formato);
+        
+        VendaDAO dao=new VendaDAO();
+        List<Vendas>lista=dao.listarVendasPorPerido(data_inicio, data_fim);
+        DefaultTableModel dados = (DefaultTableModel) tabelaHistorico.getModel();
+        dados.setNumRows(0);
+        
+        for(Vendas v:lista){
+            dados.addRow(new Object[]{
+                v.getId(),
+                v.getData_venda(),
+                v.getCliente().getNome(),
+                v.getTotal_venda(),
+                v.getObs()
+           }); 
+        }             
+    }//GEN-LAST:event_btnPesquisarActionPerformed
 
     /**
      * @param args the command line arguments
