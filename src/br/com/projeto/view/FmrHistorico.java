@@ -5,11 +5,14 @@
  */
 package br.com.projeto.view;
 
+import br.com.projeto.dao.ItemVendaDAO;
 import br.com.projeto.dao.VendaDAO;
+import br.com.projeto.model.ItensVenda;
 import br.com.projeto.model.Vendas;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -145,6 +148,11 @@ public class FmrHistorico extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tabelaHistorico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelaHistoricoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tabelaHistorico);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -179,25 +187,63 @@ public class FmrHistorico extends javax.swing.JFrame {
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
         //botão buscar venda por periodo
-        DateTimeFormatter formato =DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        
+        try {
+             DateTimeFormatter formato =DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate data_inicio=LocalDate.parse(txtDataInicio.getText(),formato);//convertendo o formato da data
         LocalDate data_fim=LocalDate.parse(txtDataFim.getText(),formato);
-        
+
         VendaDAO dao=new VendaDAO();
         List<Vendas>lista=dao.listarVendasPorPerido(data_inicio, data_fim);
         DefaultTableModel dados = (DefaultTableModel) tabelaHistorico.getModel();
         dados.setNumRows(0);
-        
+            
         for(Vendas v:lista){
+               
             dados.addRow(new Object[]{
                 v.getId(),
                 v.getData_venda(),
                 v.getCliente().getNome(),
                 v.getTotal_venda(),
                 v.getObs()
-           }); 
-        }             
+            }); 
+        }            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Nenhum registro encontrado");
+        }
+   
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void tabelaHistoricoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaHistoricoMouseClicked
+        //quando o usuario clicar em uma linha(venda)
+        FmrDetalheVenda tela= new FmrDetalheVenda();
+        
+        tela.txtCliente.setText(tabelaHistorico.getValueAt(tabelaHistorico.getSelectedRow(), 2).toString());//Nome do cliente esta na coluna 2 
+        tela.txtTotalVenda.setText(tabelaHistorico.getValueAt(tabelaHistorico.getSelectedRow(), 3).toString());
+        tela.txtData.setText(tabelaHistorico.getValueAt(tabelaHistorico.getSelectedRow(), 1).toString());
+        tela.txtObs.setText(tabelaHistorico.getValueAt(tabelaHistorico.getSelectedRow(), 4).toString());
+        
+        int venda_id=Integer.parseInt(tabelaHistorico.getValueAt(tabelaHistorico.getSelectedRow(), 0).toString());
+        
+        //dados dos itens comprados
+        ItensVenda item= new ItensVenda();
+        ItemVendaDAO dao= new ItemVendaDAO();
+        List<ItensVenda> listaItens =dao.listaItensVendaPorVenda(venda_id);
+        
+        DefaultTableModel dados = (DefaultTableModel) tela.tabelaItemVendido.getModel();
+        dados.setNumRows(0);
+            
+        for(ItensVenda i:listaItens){
+               
+            dados.addRow(new Object[]{
+                i.getProduto().getDescricao(),
+                i.getQtd(),
+                i.getProduto().getPreco(),
+                i.getSubTotal()
+            }); 
+        } 
+        tela.setVisible(true);
+    }//GEN-LAST:event_tabelaHistoricoMouseClicked
 
     /**
      * @param args the command line arguments

@@ -71,30 +71,30 @@ public class VendaDAO {
         
         try {
             List<Vendas> lista= new ArrayList<>();
-        String sql="SELECT v.id , v.data_venda, c.nome, v.total_venda, v.observacoes FROM tb_vendas AS v "
-                  +"INNER JOIN tb_clientes as c on(v.cliente_id = c.id) WHERE v.data_venda BETWEEN ? AND ?";
-        
-        PreparedStatement stmt= con.prepareStatement(sql);
-        stmt.setString(1, dataInicial.toString());
-        stmt.setString(2, dataFinal.toString());
-        ResultSet rs = stmt.executeQuery();
-        while(rs.next()){
-            Vendas obj=new Vendas();
-            Clientes c= new Clientes();
-            
-            obj.setId(rs.getInt("v.id"));
-            obj.setData_venda(rs.getString("v.data_venda"));
-            c.setNome(rs.getString("c.nome"));
-            obj.setTotal_venda(rs.getDouble("v.total_venda"));
-            obj.setObs((rs.getString("v.observacoes")));
-            
-            obj.setCliente(c);
-            
-            lista.add(obj);
-        }
-        return lista;
+            String sql="SELECT v.id , date_format(v.data_venda,'%d/%m/%y')as data_formatada, c.nome, v.total_venda, v.observacoes FROM tb_vendas AS v "
+                      +"INNER JOIN tb_clientes as c on(v.cliente_id = c.id) WHERE v.data_venda BETWEEN ? AND ?";
+
+            PreparedStatement stmt= con.prepareStatement(sql);
+            stmt.setString(1, dataInicial.toString());
+            stmt.setString(2, dataFinal.toString());
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                Vendas obj=new Vendas();
+                Clientes c= new Clientes();
+
+                obj.setId(rs.getInt("v.id"));
+                obj.setData_venda(rs.getString("data_formatada"));
+                c.setNome(rs.getString("c.nome"));
+                obj.setTotal_venda(rs.getDouble("v.total_venda"));
+                obj.setObs((rs.getString("v.observacoes")));
+
+                obj.setCliente(c);
+
+                lista.add(obj);
+            }
+            return lista;
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Vendas nao encontrada nesse Periodo");
+            JOptionPane.showMessageDialog(null, "Erro ao Procurar Vendas cadastrada");
             return null;
         }
         

@@ -118,7 +118,7 @@ public class FrmFornecedor extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Cadasro de Fornecedores");
+        jLabel1.setText("Cadastro de Fornecedores");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
