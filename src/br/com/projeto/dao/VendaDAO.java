@@ -97,6 +97,23 @@ public class VendaDAO {
             JOptionPane.showMessageDialog(null, "Erro ao Procurar Vendas cadastrada");
             return null;
         }
-        
+    }
+    //Metodo que calcula total de venda por data
+    public double retornaTotalVendaorData(LocalDate data_venda){
+        try {
+            double totalVenda=0;
+            
+            String sql="SELECT sum(total_venda) AS total FROM tb_vendas WHERE data_venda = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1,data_venda.toString());
+            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                totalVenda=rs.getDouble("total");
+            }
+            return totalVenda;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
