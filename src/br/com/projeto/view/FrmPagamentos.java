@@ -293,6 +293,8 @@ public class FrmPagamentos extends javax.swing.JFrame {
        //cadastrando os produtos na tabela itemVenda 
        for(int i=0;i<carrinho.getRowCount();i++){ //numero de linhas do carrinho
            
+           int qtd_estoque,qtd_comprada,qtd_Atualizado;
+           ProdutoDAO dao_produto = new ProdutoDAO();
            Produtos objp= new Produtos();
            ItensVenda item = new ItensVenda();
            item.setVenda(objV);
@@ -302,21 +304,22 @@ public class FrmPagamentos extends javax.swing.JFrame {
            item.setQtd(Integer.parseInt(carrinho.getValueAt(i, 2).toString()));//2 é a coluna da quantidade no carrinho
            item.setSubTotal(Double.parseDouble(carrinho.getValueAt(i, 4).toString()));
            
-           ItemVendaDAO daoItem =new ItemVendaDAO();
-           daoItem.cadastraItem(item);
-           
-           //dar baixa do estoque
-           int qtd_estoque,qtd_comprada,qtd_Atualizado;
-           ProdutoDAO dao_produto = new ProdutoDAO();
-           
            qtd_estoque=dao_produto.retornaEstoqueAtual(objp.getId());
            qtd_comprada=Integer.parseInt(carrinho.getValueAt(i, 2).toString());//quantidade comprada e a mesma do carrinho
-           qtd_Atualizado=qtd_estoque-qtd_comprada;
-           
-           dao_produto.baixarEstoque(objp.getId(), qtd_Atualizado);
-       }
-       /******************************/
-       JOptionPane.showMessageDialog(null, "Venda cadastrada Com sucesso!");
+           if(qtd_estoque<qtd_comprada)
+           {
+               JOptionPane.showMessageDialog(null, "Não temos essa quantidade no estoque");
+           }
+           else{
+              qtd_Atualizado=qtd_estoque-qtd_comprada;
+              ItemVendaDAO daoItem =new ItemVendaDAO();
+              daoItem.cadastraItem(item);
+
+              //dar baixa do estoque
+              dao_produto.baixarEstoque(objp.getId(), qtd_Atualizado); 
+              JOptionPane.showMessageDialog(null, "Venda cadastrada Com sucesso!");
+           }           
+       }     
     }//GEN-LAST:event_btnFinalizarVendaActionPerformed
 
     /**
