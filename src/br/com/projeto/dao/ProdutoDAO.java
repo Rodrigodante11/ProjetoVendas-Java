@@ -216,6 +216,28 @@ public class ProdutoDAO {
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Erro"+ e.getMessage());
+        }
+    }
+    
+    //Metodo retorna estoque atual
+    public int retornaEstoqueAtual(int id){
+        try {
+            int qtd_estoque =0;
+            String sql= "SELECT qtd_estoque FROM tb_produtos WHERE id =?";
+            
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs= stmt.executeQuery();
+            
+            if(rs.next()){
+                
+                qtd_estoque=(rs.getInt("qtd_estoque"));
+            }
+            return qtd_estoque;
+            
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

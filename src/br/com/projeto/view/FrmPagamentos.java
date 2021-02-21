@@ -6,6 +6,7 @@
 package br.com.projeto.view;
 
 import br.com.projeto.dao.ItemVendaDAO;
+import br.com.projeto.dao.ProdutoDAO;
 import br.com.projeto.dao.VendaDAO;
 import br.com.projeto.model.Clientes;
 import br.com.projeto.model.ItensVenda;
@@ -303,6 +304,16 @@ public class FrmPagamentos extends javax.swing.JFrame {
            
            ItemVendaDAO daoItem =new ItemVendaDAO();
            daoItem.cadastraItem(item);
+           
+           //dar baixa do estoque
+           int qtd_estoque,qtd_comprada,qtd_Atualizado;
+           ProdutoDAO dao_produto = new ProdutoDAO();
+           
+           qtd_estoque=dao_produto.retornaEstoqueAtual(objp.getId());
+           qtd_comprada=Integer.parseInt(carrinho.getValueAt(i, 2).toString());//quantidade comprada e a mesma do carrinho
+           qtd_Atualizado=qtd_estoque-qtd_comprada;
+           
+           dao_produto.baixarEstoque(objp.getId(), qtd_Atualizado);
        }
        /******************************/
        JOptionPane.showMessageDialog(null, "Venda cadastrada Com sucesso!");
