@@ -17,11 +17,10 @@ import java.util.Date;
 
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author rodri
- */
+
+
 public class FrmVendas extends javax.swing.JFrame {
+    Clientes obj = new Clientes();
     double total,preco,subTotal;
     int qtd;
     
@@ -396,7 +395,7 @@ public class FrmVendas extends javax.swing.JFrame {
         });
 
         btnPagamento.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnPagamento.setText("Pagamento");
+        btnPagamento.setText("PAGAMENTO");
         btnPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPagamentoActionPerformed(evt);
@@ -543,10 +542,9 @@ public class FrmVendas extends javax.swing.JFrame {
         //Busca cliente por cpf
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){ //SE O USUARIO APERTAR enter
             
-            Clientes obj = new Clientes();
             ClienteDAO dao= new ClienteDAO();
             
-            obj=dao.consultaPorCPF(txtCpf.getText());
+            obj=dao.consultaPorCPF(txtCpf.getText());//retorna todos os dados do cliente
             
             txtNome.setText(obj.getNome());
         }
@@ -576,9 +574,13 @@ public class FrmVendas extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoKeyPressed
 
     private void btnPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagamentoActionPerformed
-        FrmPagamentos telaPagamaento = new FrmPagamentos();
-        telaPagamaento.txtTotalVenda.setText(String.valueOf(total)); //txtTotalVenda esta publico em propriedade para poder fazer isso
-        telaPagamaento.setVisible(true);
+        FrmPagamentos telaPagamento = new FrmPagamentos();
+        telaPagamento.txtTotalVenda.setText(String.valueOf(total)); //txtTotalVenda esta publico em propriedade para poder fazer isso
+        
+        telaPagamento.cliente=obj;
+        telaPagamento.carrinho=carrinho;
+        
+        telaPagamento.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnPagamentoActionPerformed
 
