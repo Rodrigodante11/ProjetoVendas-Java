@@ -9,6 +9,8 @@ package br.com.projeto.view;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
 
 /**
  *
@@ -172,13 +174,24 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/configuracoes.png"))); // NOI18N
         jMenu5.setText("Configurações");
 
+        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem9.setText("Trocar Usuario");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu5.add(jMenuItem9);
 
         jMenuBar1.add(jMenu5);
 
         jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sair.png"))); // NOI18N
         jMenu7.setText("Sair");
+        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu7MouseClicked(evt);
+            }
+        });
         jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
@@ -204,6 +217,22 @@ public class FrmMenu extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         lblusario.setText(usuarioLogado);
     }//GEN-LAST:event_formWindowActivated
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // Efetuar logOut
+        FmrLogin telaLogin = new FmrLogin();
+        this.dispose();
+        telaLogin.setVisible(true);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+        //Sair do programa
+        Object[] options = { "Confirmar", "Cancelar" }; 
+        int op=JOptionPane.showConfirmDialog(null, "Deseja realmente sair?","Atenção",YES_NO_OPTION);
+        if(op==0){
+            System.exit(0);
+        }
+    }//GEN-LAST:event_jMenu7MouseClicked
 
  
 
