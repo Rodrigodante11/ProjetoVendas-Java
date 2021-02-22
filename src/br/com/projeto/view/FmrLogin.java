@@ -7,6 +7,7 @@ package br.com.projeto.view;
 
 import br.com.projeto.dao.FuncionarioDAO;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.YES_NO_OPTION;
 
 /**
  *
@@ -178,7 +179,11 @@ public class FmrLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        Object[] options = { "Confirmar", "Cancelar" }; 
+        int op=JOptionPane.showConfirmDialog(null, "Deseja realmente sair?","Atenção",YES_NO_OPTION);
+        if(op==0){
+            System.exit(0);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
