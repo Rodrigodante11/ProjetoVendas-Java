@@ -55,8 +55,8 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        menu_posicao = new javax.swing.JMenuItem();
+        menu_controVenda = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
@@ -161,11 +161,11 @@ public class FrmMenu extends javax.swing.JFrame {
         jMenuItem6.setText("Abrir PDV");
         jMenu4.add(jMenuItem6);
 
-        jMenuItem7.setText("Posição do dia");
-        jMenu4.add(jMenuItem7);
+        menu_posicao.setText("Posição do dia");
+        jMenu4.add(menu_posicao);
 
-        jMenuItem8.setText("Historico de vendas");
-        jMenu4.add(jMenuItem8);
+        menu_controVenda.setText("Historico de vendas");
+        jMenu4.add(menu_controVenda);
 
         jMenuBar1.add(jMenu4);
 
@@ -259,11 +259,11 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblusario;
+    public javax.swing.JMenuItem menu_controVenda;
+    public javax.swing.JMenuItem menu_posicao;
     private javax.swing.JDesktopPane painel_desktop;
     // End of variables declaration//GEN-END:variables
 }

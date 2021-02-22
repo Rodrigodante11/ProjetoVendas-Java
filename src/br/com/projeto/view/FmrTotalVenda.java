@@ -8,6 +8,7 @@ package br.com.projeto.view;
 import br.com.projeto.dao.VendaDAO;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -149,6 +150,7 @@ public class FmrTotalVenda extends javax.swing.JFrame {
             txtTotalVenda.setText(String.valueOf(total_venda));
             
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Erro " +e.getMessage());
         }
     }//GEN-LAST:event_btnConsultarActionPerformed
 

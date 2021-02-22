@@ -263,11 +263,29 @@ public class FuncionarioDAO {
               
               ResultSet rs=stmt.executeQuery();//toda vez que usa o (Select) usa o ResultSet
               if(rs.next()){
-                  //Usuario conseguir logar
-                  JOptionPane.showMessageDialog(null, "Seja bem vindo ao Sistema");
-                  FrmMenu tela=new FrmMenu();
-                  tela.usuarioLogado =rs.getString("nome");
-                  tela.setVisible(true);
+                //Usuario conseguir logar
+                  
+                //caso o usuario seja do tipo admin
+                if(rs.getString("nivel_acesso").equals("Administrador")){
+                    JOptionPane.showMessageDialog(null, "Seja bem vindo ao Sistema");
+                    FrmMenu tela=new FrmMenu();
+                    tela.usuarioLogado =rs.getString("nome");
+                    tela.setVisible(true); 
+                }
+                //caso o usuario seja de nive limitado
+                else if(rs.getString("nivel_acesso").equals("Usuário"))
+                {
+                    JOptionPane.showMessageDialog(null, "Seja bem vindo ao Sistema");
+                    FrmMenu tela=new FrmMenu();
+                    tela.usuarioLogado =rs.getString("nome");
+                    
+                    //Desabilitar os menus
+                    tela.menu_posicao.setEnabled(false); //dois jeitos diferentes de desabilitar
+                    tela.menu_controVenda.setEnabled(false);
+                    //tela.menu_controVenda.setVisible(false);  outra maneira de controlar o acesso
+                    tela.setVisible(true); 
+                }
+                  
               }else{
                   //dados incorretos
                   JOptionPane.showMessageDialog(null, "Dados Incorretos");
