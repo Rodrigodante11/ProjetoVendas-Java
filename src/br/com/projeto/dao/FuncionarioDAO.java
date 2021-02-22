@@ -282,6 +282,7 @@ public class FuncionarioDAO {
                     //Desabilitar os menus
                     tela.menu_posicao.setEnabled(false); //dois jeitos diferentes de desabilitar
                     tela.menu_controVenda.setEnabled(false);
+                    tela.MenuFuncionario.setEnabled(false);
                     //tela.menu_controVenda.setVisible(false);  outra maneira de controlar o acesso
                     tela.setVisible(true); 
                 }

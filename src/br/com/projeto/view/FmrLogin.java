@@ -79,7 +79,7 @@ public class FmrLogin extends javax.swing.JFrame {
         jLabel29.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
         jLabel29.setText("Senha:");
 
-        txtSenha.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        txtSenha.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
@@ -143,7 +143,7 @@ public class FmrLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 34, Short.MAX_VALUE))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jButton1, jButton2});

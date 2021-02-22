@@ -83,7 +83,7 @@ public class FrmProdutos extends javax.swing.JFrame {
         btnEditar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Produtos");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -732,7 +732,7 @@ public class FrmProdutos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    public javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel painel_dados;
     private javax.swing.JPanel painel_listaDados;
     private javax.swing.JTable tabelaProdutos;

@@ -46,22 +46,22 @@ public class FrmMenu extends javax.swing.JFrame {
         lblusario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        Menu1 = new javax.swing.JMenu();
+        MenuCliente = new javax.swing.JMenuItem();
+        Menu2 = new javax.swing.JMenu();
+        MenuFuncionario = new javax.swing.JMenuItem();
+        Menu3 = new javax.swing.JMenu();
+        MenuFornecedor = new javax.swing.JMenuItem();
+        Menu4 = new javax.swing.JMenu();
+        MenuControledeEstoque = new javax.swing.JMenuItem();
+        MenuConsultaProdutos = new javax.swing.JMenuItem();
+        Menu5 = new javax.swing.JMenu();
+        MenuPDV = new javax.swing.JMenuItem();
         menu_posicao = new javax.swing.JMenuItem();
         menu_controVenda = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
+        Menu6 = new javax.swing.JMenu();
+        MenuTrocarUsuario = new javax.swing.JMenuItem();
+        MenuSair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Controle de estoque");
@@ -120,79 +120,120 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clientes.png"))); // NOI18N
-        jMenu1.setText("Clientes");
+        Menu1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Menu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clientes.png"))); // NOI18N
+        Menu1.setText("Clientes");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Controle de Clientes");
-        jMenu1.add(jMenuItem1);
+        MenuCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_G, java.awt.event.InputEvent.CTRL_MASK));
+        MenuCliente.setText("Controle de Clientes");
+        MenuCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuClienteActionPerformed(evt);
+            }
+        });
+        Menu1.add(MenuCliente);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(Menu1);
 
-        jMenu2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/funcionarios.png"))); // NOI18N
-        jMenu2.setText("Funcionários");
+        Menu2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Menu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/funcionarios.png"))); // NOI18N
+        Menu2.setText("Funcionários");
 
-        jMenuItem2.setText("Controle de funcionarios");
-        jMenu2.add(jMenuItem2);
+        MenuFuncionario.setText("Controle de funcionarios");
+        MenuFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuFuncionarioActionPerformed(evt);
+            }
+        });
+        Menu2.add(MenuFuncionario);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(Menu2);
 
-        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fornecedores.png"))); // NOI18N
-        jMenu3.setText("Fornecedores");
+        Menu3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Menu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fornecedores.png"))); // NOI18N
+        Menu3.setText("Fornecedores");
 
-        jMenuItem3.setText("Controle de fonecedores");
-        jMenu3.add(jMenuItem3);
+        MenuFornecedor.setText("Controle de fonecedores");
+        MenuFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuFornecedorActionPerformed(evt);
+            }
+        });
+        Menu3.add(MenuFornecedor);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(Menu3);
 
-        jMenu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/produtos.png"))); // NOI18N
-        jMenu6.setText("Produtos");
+        Menu4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Menu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/produtos.png"))); // NOI18N
+        Menu4.setText("Produtos");
 
-        jMenuItem4.setText("Controle de estoque");
-        jMenu6.add(jMenuItem4);
+        MenuControledeEstoque.setText("Controle de estoque");
+        Menu4.add(MenuControledeEstoque);
 
-        jMenuItem5.setText("Consulta de Produtos");
-        jMenu6.add(jMenuItem5);
+        MenuConsultaProdutos.setText("Consulta de Produtos");
+        MenuConsultaProdutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuConsultaProdutosActionPerformed(evt);
+            }
+        });
+        Menu4.add(MenuConsultaProdutos);
 
-        jMenuBar1.add(jMenu6);
+        jMenuBar1.add(Menu4);
 
-        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vendas.png"))); // NOI18N
-        jMenu4.setText("Vendas");
+        Menu5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Menu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/vendas.png"))); // NOI18N
+        Menu5.setText("Vendas");
 
-        jMenuItem6.setText("Abrir PDV");
-        jMenu4.add(jMenuItem6);
+        MenuPDV.setText("Abrir PDV");
+        MenuPDV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuPDVActionPerformed(evt);
+            }
+        });
+        Menu5.add(MenuPDV);
 
         menu_posicao.setText("Posição do dia");
-        jMenu4.add(menu_posicao);
-
-        menu_controVenda.setText("Historico de vendas");
-        jMenu4.add(menu_controVenda);
-
-        jMenuBar1.add(jMenu4);
-
-        jMenu5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/configuracoes.png"))); // NOI18N
-        jMenu5.setText("Configurações");
-
-        jMenuItem9.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem9.setText("Trocar Usuario");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        menu_posicao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                menu_posicaoActionPerformed(evt);
             }
         });
-        jMenu5.add(jMenuItem9);
+        Menu5.add(menu_posicao);
 
-        jMenuBar1.add(jMenu5);
+        menu_controVenda.setText("Controle de Vendas");
+        menu_controVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_controVendaActionPerformed(evt);
+            }
+        });
+        Menu5.add(menu_controVenda);
 
-        jMenu7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sair.png"))); // NOI18N
-        jMenu7.setText("Sair");
-        jMenu7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jMenuBar1.add(Menu5);
+
+        Menu6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Menu6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/configuracoes.png"))); // NOI18N
+        Menu6.setText("Configurações");
+
+        MenuTrocarUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
+        MenuTrocarUsuario.setText("Trocar Usuario");
+        MenuTrocarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuTrocarUsuarioActionPerformed(evt);
+            }
+        });
+        Menu6.add(MenuTrocarUsuario);
+
+        jMenuBar1.add(Menu6);
+
+        MenuSair.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        MenuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sair.png"))); // NOI18N
+        MenuSair.setText("Sair");
+        MenuSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu7MouseClicked(evt);
+                MenuSairMouseClicked(evt);
             }
         });
-        jMenuBar1.add(jMenu7);
+        jMenuBar1.add(MenuSair);
 
         setJMenuBar(jMenuBar1);
 
@@ -218,21 +259,64 @@ public class FrmMenu extends javax.swing.JFrame {
         lblusario.setText(usuarioLogado);
     }//GEN-LAST:event_formWindowActivated
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void MenuTrocarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuTrocarUsuarioActionPerformed
         // Efetuar logOut
         FmrLogin telaLogin = new FmrLogin();
         this.dispose();
         telaLogin.setVisible(true);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_MenuTrocarUsuarioActionPerformed
 
-    private void jMenu7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu7MouseClicked
+    private void MenuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuSairMouseClicked
         //Sair do programa
         Object[] options = { "Confirmar", "Cancelar" }; 
         int op=JOptionPane.showConfirmDialog(null, "Deseja realmente sair?","Atenção",YES_NO_OPTION);
         if(op==0){
             System.exit(0);
         }
-    }//GEN-LAST:event_jMenu7MouseClicked
+    }//GEN-LAST:event_MenuSairMouseClicked
+
+    private void MenuConsultaProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuConsultaProdutosActionPerformed
+        // Menu consulta de produtos
+        FrmProdutos tela= new FrmProdutos();
+        tela.jTabbedPane1.setSelectedIndex(1);//abrir a aba 1 que é a de consulta produtos
+        tela.setVisible(true);
+    }//GEN-LAST:event_MenuConsultaProdutosActionPerformed
+
+    private void MenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuClienteActionPerformed
+        //abrindo tela de clientes
+        FrmCliente tela= new FrmCliente();
+        tela.setVisible(true);
+    }//GEN-LAST:event_MenuClienteActionPerformed
+
+    private void MenuFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuFuncionarioActionPerformed
+        //abrindo tela de Funcionarios 
+        FrmFuncionarios tela= new FrmFuncionarios();
+        tela.setVisible(true);
+    }//GEN-LAST:event_MenuFuncionarioActionPerformed
+
+    private void MenuFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuFornecedorActionPerformed
+        //abrindo tela de Fornecedores 
+        FrmFornecedor tela= new FrmFornecedor();
+        tela.setVisible(true);
+    }//GEN-LAST:event_MenuFornecedorActionPerformed
+
+    private void MenuPDVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPDVActionPerformed
+        //abrindo tela de vendas 
+        FrmVendas tela= new FrmVendas();
+        tela.setVisible(true);
+    }//GEN-LAST:event_MenuPDVActionPerformed
+
+    private void menu_posicaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_posicaoActionPerformed
+        //abrindo tela de totalVendas 
+        FmrTotalVenda tela= new FmrTotalVenda();
+        tela.setVisible(true);
+    }//GEN-LAST:event_menu_posicaoActionPerformed
+
+    private void menu_controVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_controVendaActionPerformed
+        //abrindo tela de historico de vendas 
+        FmrHistorico tela= new FmrHistorico();
+        tela.setVisible(true);
+    }//GEN-LAST:event_menu_controVendaActionPerformed
 
  
 
@@ -273,22 +357,22 @@ public class FrmMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu Menu1;
+    private javax.swing.JMenu Menu2;
+    private javax.swing.JMenu Menu3;
+    private javax.swing.JMenu Menu4;
+    private javax.swing.JMenu Menu5;
+    private javax.swing.JMenu Menu6;
+    private javax.swing.JMenuItem MenuCliente;
+    private javax.swing.JMenuItem MenuConsultaProdutos;
+    private javax.swing.JMenuItem MenuControledeEstoque;
+    private javax.swing.JMenuItem MenuFornecedor;
+    public javax.swing.JMenuItem MenuFuncionario;
+    private javax.swing.JMenuItem MenuPDV;
+    private javax.swing.JMenu MenuSair;
+    private javax.swing.JMenuItem MenuTrocarUsuario;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblusario;
     public javax.swing.JMenuItem menu_controVenda;
