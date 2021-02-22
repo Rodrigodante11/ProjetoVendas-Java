@@ -125,8 +125,8 @@
         <Container class="javax.swing.JPanel" name="painel_listaDados">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Consulta de Produtos">
-                <Property name="tabTitle" type="java.lang.String" value="Consulta de Produtos"/>
+              <JTabbedPaneConstraints tabName="Cadastro de Produtos">
+                <Property name="tabTitle" type="java.lang.String" value="Cadastro de Produtos"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -197,7 +197,7 @@
                           <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cbFornecedor" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="182" max="32767" attributes="0"/>
+                      <EmptySpace pref="240" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -335,7 +335,7 @@
                       <Component id="jButton4" linkSize="1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton5" linkSize="1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="305" max="32767" attributes="0"/>
+                      <EmptySpace pref="411" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

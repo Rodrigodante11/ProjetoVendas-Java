@@ -168,6 +168,11 @@ public class FrmMenu extends javax.swing.JFrame {
         Menu4.setText("Produtos");
 
         MenuControledeEstoque.setText("Controle de estoque");
+        MenuControledeEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuControledeEstoqueActionPerformed(evt);
+            }
+        });
         Menu4.add(MenuControledeEstoque);
 
         MenuConsultaProdutos.setText("Consulta de Produtos");
@@ -285,6 +290,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private void MenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuClienteActionPerformed
         //abrindo tela de clientes
         FrmCliente tela= new FrmCliente();
+        
         tela.setVisible(true);
     }//GEN-LAST:event_MenuClienteActionPerformed
 
@@ -317,6 +323,12 @@ public class FrmMenu extends javax.swing.JFrame {
         FmrHistorico tela= new FmrHistorico();
         tela.setVisible(true);
     }//GEN-LAST:event_menu_controVendaActionPerformed
+
+    private void MenuControledeEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuControledeEstoqueActionPerformed
+        //abrindo tela de historico de vendas 
+        FmrEstoque tela= new FmrEstoque();
+        tela.setVisible(true);
+    }//GEN-LAST:event_MenuControledeEstoqueActionPerformed
 
  
 

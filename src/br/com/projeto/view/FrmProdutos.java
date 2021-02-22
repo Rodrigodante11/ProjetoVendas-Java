@@ -238,10 +238,10 @@ public class FrmProdutos extends javax.swing.JFrame {
                 .addGroup(painel_listaDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(cbFornecedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Consulta de Produtos", painel_listaDados);
+        jTabbedPane1.addTab("Cadastro de Produtos", painel_listaDados);
 
         txtPesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -345,7 +345,7 @@ public class FrmProdutos extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5)
-                .addContainerGap(305, Short.MAX_VALUE))
+                .addContainerGap(411, Short.MAX_VALUE))
         );
 
         painel_dadosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jButton3, jButton4, jButton5});
