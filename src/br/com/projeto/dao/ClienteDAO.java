@@ -17,7 +17,7 @@ public class ClienteDAO {
     public ClienteDAO(){
         this.con =new ConnectionFactory().getConnection();
     }
-    //metodo Cadastrar cliente
+    //metodo Cadastrar clientes
     public void cadastrarCliente(Clientes obj){
         
         try {
