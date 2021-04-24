@@ -26,3 +26,4 @@ target/
 nbproject/private/
 nbbuild/
 nbdist/
+/dist/
